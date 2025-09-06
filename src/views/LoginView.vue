@@ -6,8 +6,8 @@ import axios from 'axios';
 const router = useRouter();
 
 const loginData = ref({
-  email:'jok.jok.123@gmail.com',
-  password:'12345678'
+  email:'',
+  password:''
 })
 
 const login = async ()=>{
