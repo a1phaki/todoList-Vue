@@ -14,7 +14,7 @@ const todo = ref({
 
 const token = getCookie('hexToken');
 
-const completedTodos = ref(0);
+const uncompletedTodos = ref(0);
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -51,7 +51,7 @@ const getTodoList = async ()=>{
       }
     });
     todoListData.value = res.data.data;
-    completedTodos.value = todoListData.value.filter(todo=>todo.status).length;
+    uncompletedTodos.value = todoListData.value.filter(todo=>!todo.status).length;
   } catch (error) {
     alert('取得代辦事項失敗，請稍後再試');
   }
@@ -176,7 +176,7 @@ onMounted(()=>{
               </li>
             </ul>
             <div class="todoList_statistics">
-              <p> {{completedTodos}} 個已完成項目</p>
+              <p> {{uncompletedTodos}} 個未完成項目</p>
             </div>
           </div>
         </div>

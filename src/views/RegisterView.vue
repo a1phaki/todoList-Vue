@@ -1,7 +1,9 @@
 <script setup>
-import {RouterLink} from 'vue-router';
+import {RouterLink,useRouter} from 'vue-router';
 import {ref} from 'vue';
 import axios from 'axios';
+
+const router = useRouter();
 
 const memberData = ref({
   email:'',
@@ -22,6 +24,7 @@ const register = async ()=>{
   try{
     await axios.post('https://todolist-api.hexschool.io/users/sign_up', memberData.value);
     alert('恭喜您註冊成功！');
+    router.push('/login');
   }catch(error){
     alert(error.response.data.message);
   }
